@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  lambda_functions:
+    tty: true
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: lambda_functions
+    # 起動する Lambda 関数を指定
+    command: src/function_a/app.handler
+    ports:
+      - "9000:8080"
+    container_name: lambda_functions
